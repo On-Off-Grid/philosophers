@@ -1,0 +1,103 @@
+# Philosophers Project Evaluation Requirements: Complete Guide
+
+## Understanding the Evaluation Philosophy
+
+The evaluation process for the Philosophers project is designed with zero tolerance for fundamental errors, reflecting the critical nature of concurrent programming where small mistakes can lead to catastrophic failures in real-world systems. This strict approach mirrors industry standards where thread safety and memory management errors can cause system crashes or security vulnerabilities.
+
+The evaluation follows a progressive structure that builds from basic correctness checks to complex behavior verification. Each stage serves as a foundation for the next, ensuring that evaluators can identify problems early and understand their root causes.
+
+## Fundamental Correctness Requirements
+
+### Code Quality and Safety Standards
+
+The evaluation begins with absolute requirements that, if violated, result in immediate project failure. These standards reflect the non-negotiable aspects of systems programming where safety and reliability are paramount.
+
+Memory safety forms the cornerstone of the evaluation criteria. Any memory leaks, undefined behavior, or crashes indicate fundamental misunderstanding of resource management in concurrent environments. This strictness teaches students that in systems programming, "mostly working" is not acceptable since intermittent failures can be far more dangerous than obvious bugs.
+
+The adherence to coding standards (the Norm) ensures consistency and readability, which becomes crucial when multiple developers work on concurrent systems. Code that violates these standards suggests a lack of attention to detail that could manifest as subtle race conditions or synchronization errors.
+
+Hardware compatibility considerations acknowledge that timing-sensitive concurrent code may behave differently across systems. The evaluation framework recognizes this reality while maintaining strict standards for algorithmic correctness.
+
+### Global Variable Prohibition
+
+The absolute prohibition against global variables for shared resource management represents a fundamental principle of good concurrent programming design. Global variables in concurrent contexts create hidden dependencies that make code difficult to reason about, test, and maintain.
+
+This requirement forces students to properly encapsulate shared state within appropriate data structures and pass information through well-defined interfaces. The harsh penalty for violating this rule reinforces that proper abstraction and encapsulation are not optional in concurrent programming but essential for creating maintainable and correct systems.
+
+## Mandatory Part Architecture Verification
+
+### Thread and Resource Management
+
+The evaluation systematically verifies the core architectural decisions that define whether the implementation correctly models the dining philosophers problem. The requirement for exactly one thread per philosopher ensures students understand the mapping between problem entities and system resources.
+
+The one-fork-per-philosopher constraint with proper mutex protection teaches fundamental lessons about resource modeling in concurrent systems. Each fork represents a shared resource that requires protection, and the evaluation verifies that students understand this principle by checking for appropriate mutex usage around fork state modifications.
+
+The verification of mutex usage around fork operations goes beyond simple presence checking. Evaluators must confirm that mutexes are used correctly to protect both reading and writing operations on fork state, ensuring that the critical sections are properly identified and protected.
+
+### Output Integrity and Synchronization
+
+Output mixing represents one of the most visible symptoms of inadequate synchronization. The evaluation specifically checks for this because scrambled output often indicates deeper synchronization problems that might not be immediately apparent in other aspects of the program.
+
+The death detection mechanism receives special attention because it represents one of the most challenging aspects of the implementation. The evaluation examines how death is detected and verified, particularly focusing on preventing race conditions between death detection and eating initiation. This dual state management challenge often reveals whether students truly understand the subtleties of concurrent programming.
+
+## Testing Strategy and Edge Cases
+
+### Boundary Testing Philosophy
+
+The testing strategy deliberately focuses on edge cases and boundary conditions that expose common concurrent programming errors. The limitation to 200 philosophers and minimum timing values of 60 milliseconds reflects practical constraints while ensuring that timing-related bugs become apparent.
+
+The specific test cases are carefully chosen to expose different types of errors. Single philosopher scenarios test basic functionality without complex synchronization challenges. Multi-philosopher tests with varying time constraints reveal race conditions, deadlock scenarios, and timing precision issues.
+
+### Critical Test Case Analysis
+
+The test case progression follows a logical sequence that builds complexity while isolating specific failure modes. The single philosopher test with 800ms time-to-die but 200ms eating and sleeping times creates a scenario where death should occur, testing basic timing logic without synchronization complexity.
+
+The five-philosopher survival test introduces synchronization challenges while maintaining survivable timing parameters. This test reveals whether the implementation can handle resource contention without creating deadlock or starvation scenarios.
+
+The meal counting test adds termination condition complexity, verifying that the implementation can track state across multiple philosophers and correctly determine when simulation should end based on collective behavior rather than individual death.
+
+The tight timing tests (410ms and 310ms time-to-die scenarios) specifically target implementations that have subtle timing errors or inefficient synchronization that might cause unexpected deaths or survival in edge cases.
+
+### Precision Timing Verification
+
+The two-philosopher death timing test represents the most stringent requirement, demanding that death detection occur within 10ms of the actual death time. This requirement forces implementations to use efficient synchronization mechanisms and precise timing calculations. The small philosopher count eliminates synchronization complexity, focusing attention purely on timing precision.
+
+## Bonus Part Evaluation Criteria
+
+### Process Architecture Verification
+
+The bonus part evaluation shifts focus from thread management to process management while maintaining similar correctness principles. The verification that each philosopher runs as a separate process with a non-participating main process tests understanding of process creation and management.
+
+The orphan process check ensures proper cleanup and resource management at the process level. This requirement teaches students about process lifecycle management and the importance of proper termination handling in multi-process applications.
+
+### Semaphore-Based Synchronization
+
+The single semaphore requirement for fork management represents a fundamentally different approach to resource management compared to the mutex-based mandatory part. This design choice tests understanding of counting semaphores and their appropriate use cases.
+
+The output protection mechanism in the process-based implementation requires different synchronization strategies than the thread-based version, testing flexibility in applying synchronization concepts across different execution models.
+
+### Death Detection in Process Context
+
+Death detection across process boundaries presents unique challenges compared to thread-based implementations. The evaluation examines how inter-process communication handles death notification and prevention of race conditions between death detection and eating initiation.
+
+## Evaluation Methodology Insights
+
+### Progressive Difficulty Assessment
+
+The evaluation structure follows educational principles by building complexity gradually. Initial checks verify fundamental correctness before progressing to behavioral verification and finally to stress testing under challenging conditions.
+
+This progression allows evaluators to provide targeted feedback about specific areas of misunderstanding rather than simply declaring the project failed. Students can understand whether their problems lie in basic implementation, synchronization logic, or timing precision.
+
+### Real-World Relevance
+
+The evaluation criteria reflect real-world requirements for concurrent systems where correctness, efficiency, and reliability are all essential. The strict timing requirements mirror real-time system constraints, while the synchronization checks reflect the type of analysis required in safety-critical software development.
+
+The comprehensive testing strategy teaches students that concurrent systems require extensive validation because bugs may only appear under specific timing conditions or resource contention scenarios.
+
+## Learning Objectives Through Evaluation
+
+The evaluation process itself serves as a learning tool, demonstrating proper testing methodology for concurrent systems. Students learn that successful concurrent programming requires systematic verification of timing behavior, resource management, and edge case handling.
+
+The contrast between mandatory and bonus evaluation criteria highlights different approaches to solving the same fundamental problem, reinforcing that multiple valid solutions exist in systems programming while maintaining consistent correctness requirements.
+
+The detailed behavioral verification teaches that concurrent programming success requires more than syntactic correctness; it demands deep understanding of timing, synchronization, and resource management principles that can only be verified through comprehensive testing.
