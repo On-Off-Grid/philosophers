@@ -64,6 +64,7 @@ static int init_philos(t_sim *sim)
     sim->philos[i].right_fork = &sim->forks[(i + 1) % sim->param.num_of_philos];
     i++;
   }
+  return (SUCCESS);
 }
 
 int init_sim(t_sim *sim, int ac, char **av)
@@ -74,7 +75,7 @@ int init_sim(t_sim *sim, int ac, char **av)
   status = parse_args(&sim->params, ac, av);
   if (status != SUCCESS)
     return (status);
-  if (pthread_mutex_init(&sim->print_mutex, NULL) != 0)
+  if (pthread_mutex_init(sim->print_mutex, NULL) != 0)
     return (ERR_MUTEX);
   status = init_forks(sim);
   if (status != SUCCESS)

@@ -9,8 +9,8 @@ int main(int ac, char ** av)
     if (status != SUCCESS)
         return (status);
 
+    // TODO implenet philosophers routine
     philos_routine();
-
 
     cleanup_sim(&sim);
 }
