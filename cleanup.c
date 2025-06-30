@@ -1,25 +1,24 @@
-#include "philo.h"
+#include "philosophers.h"
 
-void cleanup_simulation(t_simulation *sim)
+void  cleanup_sim(t_sim *sim)
 {
-    int i;
+  int i;
 
-    // Destroy fork mutexes
-    if (sim->forks)
+  if (sim->forks)
+  {
+    i = 0;
+    while (i < sim->param.num_of_philos)
     {
-        i = 0;
-        while (i < sim->params.num_philosophers)
-        {
-            pthread_mutex_destroy(&sim->forks[i].mutex);
-            i++;
-        }
-        free(sim->forks);
+      pthread_mutex_destroy(&sim->forks[i].mutex);
+      i++;
     }
-
-    // Free philosophers array
-    if (sim->philosophers)
-        free(sim->philosophers);
-
-    // Destroy print mutex
-    pthread_mutex_destroy(&sim->print_mutex);
+    free(sim->forks);
+    sim->forks = NULL;
+  }
+  if (sim->philos)
+  {
+    free(sim->philos);
+    sim->philos = NULL;
+  }
+  pthread_mutex_destroy(sim->print_mutex);
 }

@@ -1,19 +1,16 @@
-#include "philo.h"
+#include "philosophers.h"
 
-int main(int argc, char **argv)
+int main(int ac, char ** av)
 {
-    t_simulation sim;
-    int         status;
+    t_sim sim;
+    int   status;
 
-    // Initialize simulation with parsed arguments
-    status = init_simulation(&sim, argc, argv);
+    status = init_sim(&sim, ac, av);
     if (status != SUCCESS)
         return (status);
 
-    // Create threads and start simulation
-    // TODO: Implement simulation start logic
+    philos_routine();
 
-    // Cleanup resources
-    cleanup_simulation(&sim);
-    return (SUCCESS);
+
+    cleanup_sim(&sim);
 }
