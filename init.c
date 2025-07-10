@@ -12,7 +12,7 @@ static int validate_args(t_params *param)
   return (SUCCESS);
 }
 
-static int parse_args(t_params *param, int ac, char **av)
+int parse_args(t_params *param, int ac, char **av)
 {
   if (ac != 5 && ac != 6)
     return (ERR_ARGS);
@@ -20,11 +20,12 @@ static int parse_args(t_params *param, int ac, char **av)
   param->time_to_die= atoi(av[2]);
   param->time_to_eat= atoi(av[3]);
   param->time_to_sleep= atoi(av[4]);
+  param->start_time = current_timestamp_ms();
   if (ac == 6)
     param->must_eat_time = atoi(av[5]);
   else
     param->must_eat_time = -1;
-  return (validate_args);
+  return (validate_args(param));
 }
 
 static int init_forks(t_sim *sim)
@@ -72,7 +73,7 @@ int init_sim(t_sim *sim, int ac, char **av)
   int status;
 
   sim->sim_running = 1;
-  status = parse_args(&sim->params, ac, av);
+  status = parse_args(&sim->param, ac, av);
   if (status != SUCCESS)
     return (status);
   if (pthread_mutex_init(sim->print_mutex, NULL) != 0)

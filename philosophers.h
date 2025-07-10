@@ -18,6 +18,7 @@
 # define EATING 1
 # define SLEEPING 2
 # define DEAD 3
+# define FORK 4
 
 // Shared parameters struct
 typedef  struct s_params
@@ -38,16 +39,6 @@ typedef struct s_fork
   pthread_mutex_t mutex;
 }     t_fork;
 
-// Simulation struct
-typedef  struct s_sim          
-{                              
-  t_params        param;             
-  t_philo         *philos;           
-  t_fork          *forks;            
-  pthread_mutex_t *print_mutex;
-  int             sim_running;       
-}     t_sim;    
-
 // Philosopher struct
 typedef struct s_philo
 {
@@ -62,9 +53,23 @@ typedef struct s_philo
   pthread_t       thread;
 }       t_philo;
 
+// Simulation struct
+typedef  struct s_sim          
+{                              
+  t_params        param;             
+  t_philo         *philos;           
+  t_fork          *forks;            
+  pthread_mutex_t *print_mutex;
+  int             sim_running;       
+}     t_sim;    
+
+
+
 // Functions prototypes:
 
 int init_sim(t_sim *sim, int ac, char **av);
 int parse_args(t_params *params, int ac, char **av);
+void  cleanup_sim(t_sim *sim);
+long long   current_timestamp_ms(void);
 
 #endif
