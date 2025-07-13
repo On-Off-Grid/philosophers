@@ -20,5 +20,15 @@ void  cleanup_sim(t_sim *sim)
     free(sim->philos);
     sim->philos = NULL;
   }
+  if (sim->print_mutex)
+  {
+    pthread_mutex_destroy(sim->print_mutex);
+    free(sim->print_mutex);
+  }
+  if (sim->time_mutex)
+  {
+    pthread_mutex_destroy(sim->time_mutex);
+    free(sim->time_mutex);
+  }
   pthread_mutex_destroy(sim->print_mutex);
 }

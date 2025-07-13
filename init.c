@@ -56,13 +56,16 @@ static int init_philos(t_sim *sim)
   i = 0;
   while (i < sim->param.num_of_philos)
   {
+    sim->philos[i].running_sim = 1;
     sim->philos[i].id = i + 1;
     sim->philos[i].meals_eaten = 0;
     sim->philos[i].state = THINKING;
     sim->philos[i].params = &sim->param;
-    sim->philos[i].print_mutex = &sim->print_mutex;
+    sim->philos[i].print_mutex = sim->print_mutex;
+    sim->philos[i].time_mutex = sim->time_mutex;
     sim->philos[i].left_fork = &sim->forks[i];
     sim->philos[i].right_fork = &sim->forks[(i + 1) % sim->param.num_of_philos];
+    sim->philos[i].last_meal_time = sim->param.start_time;
     i++;
   }
   return (SUCCESS);
@@ -76,7 +79,15 @@ int init_sim(t_sim *sim, int ac, char **av)
   status = parse_args(&sim->param, ac, av);
   if (status != SUCCESS)
     return (status);
+  sim->print_mutex = malloc(sizeof(pthread_mutex_t));
+  if (!sim->print_mutex)
+    return (ERR_MALLOC);
+  sim->time_mutex = malloc(sizeof(pthread_mutex_t));
+  if (!sim->time_mutex)
+    return (ERR_MALLOC);
   if (pthread_mutex_init(sim->print_mutex, NULL) != 0)
+    return (ERR_MUTEX);
+  if (pthread_mutex_init(sim->time_mutex, NULL) != 0)
     return (ERR_MUTEX);
   status = init_forks(sim);
   if (status != SUCCESS)
