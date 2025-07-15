@@ -1,0 +1,107 @@
+=== Philosophers Test Results ===
+Test: quick_death_detection
+Arguments: 3 200 100 100
+Number of runs: 5
+Timestamp: Mon Jul 14 07:27:03 AM +01 2025
+===============================
+
+--- Test Run 1 ---
+Started at: 2025-07-14 07:27:03.670
+
+0 1 has taken a fork
+0 1 has taken a fork
+0 1 is eating
+0 3 has taken a fork
+100 1 is sleeping
+100 3 has taken a fork
+100 3 is eating
+200 3 is sleeping
+200 2 has taken a fork
+200 2 has taken a fork
+200 2 is eating
+200 1 is thinking
+200 1 has taken a fork
+
+Exit code: 0
+Finished at: 2025-07-14 07:27:03.876
+
+--- Test Run 2 ---
+Started at: 2025-07-14 07:27:03.879
+
+0 1 has taken a fork
+0 1 has taken a fork
+0 1 is eating
+0 3 has taken a fork
+100 1 is sleeping
+100 3 has taken a fork
+100 3 is eating
+200 3 is sleeping
+200 2 has taken a fork
+200 2 has taken a fork
+200 2 is eating
+200 1 is thinking
+200 1 has taken a fork
+
+Exit code: 0
+Finished at: 2025-07-14 07:27:04.086
+
+--- Test Run 3 ---
+Started at: 2025-07-14 07:27:04.089
+
+0 3 has taken a fork
+0 1 has taken a fork
+0 1 has taken a fork
+0 1 is eating
+100 1 is sleeping
+100 3 has taken a fork
+100 3 is eating
+200 1 is thinking
+200 3 is sleeping
+200 2 has taken a fork
+200 2 has taken a fork
+200 2 is eating
+200 1 has taken a fork
+
+Exit code: 0
+Finished at: 2025-07-14 07:27:04.296
+
+--- Test Run 4 ---
+Started at: 2025-07-14 07:27:04.298
+
+0 1 has taken a fork
+0 1 has taken a fork
+0 1 is eating
+0 3 has taken a fork
+100 1 is sleeping
+100 3 has taken a fork
+100 3 is eating
+200 1 is thinking
+200 3 is sleeping
+200 2 has taken a fork
+200 2 has taken a fork
+200 2 is eating
+200 1 has taken a fork
+
+Exit code: 0
+Finished at: 2025-07-14 07:27:04.505
+
+--- Test Run 5 ---
+Started at: 2025-07-14 07:27:04.507
+
+0 1 has taken a fork
+0 1 has taken a fork
+0 1 is eating
+0 3 has taken a fork
+100 1 is sleeping
+100 3 has taken a fork
+100 3 is eating
+200 1 is thinking
+200 3 is sleeping
+200 2 has taken a fork
+200 2 has taken a fork
+200 2 is eating
+200 1 has taken a fork
+
+Exit code: 0
+Finished at: 2025-07-14 07:27:04.714
+

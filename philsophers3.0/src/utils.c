@@ -20,7 +20,7 @@ void	interruptible_sleep(int ms, t_philo *philo)
 void	print_state(t_philo *philo, char *state)
 {
 	pthread_mutex_lock(philo->print_mutex);
-	if (philo->running_sim)
+	if (philo->running_sim || (!philo->running_sim && philo->params->num_of_philos != 1))
 		printf("%lld %d %s\n", current_timestamp_ms() - philo->params->start_time, philo->id, state);
 	pthread_mutex_unlock(philo->print_mutex);
 }

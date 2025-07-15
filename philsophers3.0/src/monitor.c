@@ -47,8 +47,11 @@ static int	check_philosopher_death(t_sim *sim, int i)
 	{
 		sim->philos[i].state = DEAD;
 		sim->philos[i].running_sim = 0;
+		//printf("before the mutex unlock\n");
 		pthread_mutex_unlock(sim->philos[i].time_mutex);
 		print_state(&sim->philos[i], "died");
+		sim->philos[i].running_sim = 0;
+		//	printf("after the mutex unlock\n");
 		stop_simulation(sim);
 		return (1);
 	}

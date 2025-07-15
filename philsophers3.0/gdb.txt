@@ -1,0 +1,116 @@
+Breakpoint 1 at 0x4011f6: file src/main.c, line 8.
+Breakpoint 2 at 0x401bf3: file src/init.c, line 91.
+Breakpoint 3 at 0x401fcc: file src/routine.c, line 8.
+Breakpoint 4 at 0x4016fc: file src/monitor.c, line 64.
+Breakpoint 5 at 0x40138c: file src/thread.c, line 69.
+Breakpoint 6 at 0x401888: file src/monitor.c, line 28.
+Breakpoint 7 at 0x4018ef: file src/monitor.c, line 42.
+Starting program: /home/souichou/Desktop/philosophers/philsophers3.0/philo 4 60 60 60
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (ac=5, av=0x7fffffffdee8) at src/main.c:8
+
+Breakpoint 2, init_sim (sim=0x7fffffffdd80, ac=5, av=0x7fffffffdee8) at src/init.c:91
+main (ac=5, av=0x7fffffffdee8) at src/main.c:9
+
+Breakpoint 3, routine (sim=0x7fffffffdd80) at src/routine.c:8
+[New Thread 0x7ffff7bff640 (LWP 159726)]
+[Switching to Thread 0x7ffff7bff640 (LWP 159726)]
+
+Thread 2 "philo" hit Breakpoint 4, monitor_routine (arg=0x7fffffffdd80) at src/monitor.c:64
+[New Thread 0x7ffff73fe640 (LWP 159727)]
+[New Thread 0x7ffff6bfd640 (LWP 159728)]
+[Switching to Thread 0x7ffff73fe640 (LWP 159727)]
+
+Thread 3 "philo" hit Breakpoint 5, thread_routine (arg=0x4063a0) at src/thread.c:69
+[New Thread 0x7ffff63fc640 (LWP 159729)]
+[New Thread 0x7ffff5bfb640 (LWP 159730)]
+[Switching to Thread 0x7ffff6bfd640 (LWP 159728)]
+
+Thread 4 "philo" hit Breakpoint 5, thread_routine (arg=0x4063e8) at src/thread.c:69
+[Switching to Thread 0x7ffff7bff640 (LWP 159726)]
+
+Thread 2 "philo" hit Breakpoint 7, check_philosopher_death (sim=0x7fffffffdd80, i=0) at src/monitor.c:42
+[Switching to Thread 0x7ffff63fc640 (LWP 159729)]
+
+Thread 5 "philo" hit Breakpoint 5, thread_routine (arg=0x406430) at src/thread.c:69
+[Thread 0x7ffff73fe640 (LWP 159727) exited]
+[Switching to Thread 0x7ffff5bfb640 (LWP 159730)]
+
+Thread 6 "philo" hit Breakpoint 5, thread_routine (arg=0x406478) at src/thread.c:69
+[Switching to Thread 0x7ffff7bff640 (LWP 159726)]
+
+Thread 2 "philo" hit Breakpoint 6, stop_simulation (sim=0x7fffffffdd80) at src/monitor.c:28
+  Id   Target Id                                  Frame 
+  1    Thread 0x7ffff7fa2740 (LWP 159262) "philo" __futex_abstimed_wait_common64 (private=128, 
+    cancel=true, abstime=0x0, op=265, expected=159728, futex_word=0x7ffff6bfd910)
+    at ./nptl/futex-internal.c:57
+* 2    Thread 0x7ffff7bff640 (LWP 159726) "philo" stop_simulation (sim=0x7fffffffdd80)
+    at src/monitor.c:30
+  4    Thread 0x7ffff6bfd640 (LWP 159728) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff6bfcdd0, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  5    Thread 0x7ffff63fc640 (LWP 159729) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff63fbd80, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  6    Thread 0x7ffff5bfb640 (LWP 159730) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff5bfadd0, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  Id   Target Id                                  Frame 
+  1    Thread 0x7ffff7fa2740 (LWP 159262) "philo" __futex_abstimed_wait_common64 (private=128, 
+    cancel=true, abstime=0x0, op=265, expected=159728, futex_word=0x7ffff6bfd910)
+    at ./nptl/futex-internal.c:57
+* 2    Thread 0x7ffff7bff640 (LWP 159726) "philo" stop_simulation (sim=0x7fffffffdd80)
+    at src/monitor.c:32
+  4    Thread 0x7ffff6bfd640 (LWP 159728) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff6bfcd80, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  5    Thread 0x7ffff63fc640 (LWP 159729) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff63fbdd0, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  6    Thread 0x7ffff5bfb640 (LWP 159730) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff5bfad80, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+[Thread 0x7ffff6bfd640 (LWP 159728) exited]
+  Id   Target Id                                  Frame 
+  1    Thread 0x7ffff7fa2740 (LWP 159262) "philo" __futex_abstimed_wait_common64 (private=128, 
+    cancel=true, abstime=0x0, op=265, expected=159729, futex_word=0x7ffff63fc910)
+    at ./nptl/futex-internal.c:57
+* 2    Thread 0x7ffff7bff640 (LWP 159726) "philo" stop_simulation (sim=0x7fffffffdd80)
+    at src/monitor.c:30
+  5    Thread 0x7ffff63fc640 (LWP 159729) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff63fbdd0, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  6    Thread 0x7ffff5bfb640 (LWP 159730) "philo" 0x00007ffff7ce57f8 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff5bfad80, 
+    rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+[Thread 0x7ffff63fc640 (LWP 159729) exited]
+
+Thread 6 (Thread 0x7ffff5bfb640 (LWP 159730) "philo"):
+#0  0x00007ffff7ce57f8 in __GI___clock_nanosleep (clock_id=clock_id@entry=0, flags=flags@entry=0, req=req@entry=0x7ffff5bfadd0, rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+#1  0x00007ffff7cea677 in __GI___nanosleep (req=req@entry=0x7ffff5bfadd0, rem=rem@entry=0x0) at ../sysdeps/unix/sysv/linux/nanosleep.c:25
+#2  0x00007ffff7d1bf2f in usleep (useconds=<optimized out>) at ../sysdeps/posix/usleep.c:31
+#3  0x00000000004012fb in interruptible_sleep (ms=60, philo=0x406478) at src/utils.c:17
+#4  0x0000000000401442 in thread_routine (arg=0x406478) at src/thread.c:80
+#5  0x00007ffff7c94ac3 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:442
+#6  0x00007ffff7d26850 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+
+Thread 2 (Thread 0x7ffff7bff640 (LWP 159726) "philo"):
+#0  stop_simulation (sim=0x7fffffffdd80) at src/monitor.c:33
+#1  0x00000000004019e0 in check_philosopher_death (sim=0x7fffffffdd80, i=0) at src/monitor.c:52
+#2  0x00000000004017a4 in monitor_routine (arg=0x7fffffffdd80) at src/monitor.c:80
+#3  0x00007ffff7c94ac3 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:442
+#4  0x00007ffff7d26850 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+
+Thread 1 (Thread 0x7ffff7fa2740 (LWP 159262) "philo"):
+#0  __futex_abstimed_wait_common64 (private=128, cancel=true, abstime=0x0, op=265, expected=159730, futex_word=0x7ffff5bfb910) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=128, abstime=0x0, clockid=0, expected=159730, futex_word=0x7ffff5bfb910) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x7ffff5bfb910, expected=159730, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=128) at ./nptl/futex-internal.c:139
+#3  0x00007ffff7c96624 in __pthread_clockjoin_ex (threadid=140737316369984, thread_return=0x0, clockid=0, abstime=0x0, block=<optimized out>) at ./nptl/pthread_join_common.c:105
+#4  0x0000000000402089 in routine (sim=0x7fffffffdd80) at src/routine.c:19
+#5  0x0000000000401227 in main (ac=5, av=0x7fffffffdee8) at src/main.c:11
+[Thread 0x7ffff5bfb640 (LWP 159730) exited]
+check_philosopher_death (sim=0x7fffffffdd80, i=0) at src/monitor.c:53
+monitor_routine (arg=0x7fffffffdd80) at src/monitor.c:81
+start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:443

@@ -1,0 +1,52 @@
+=== Philosophers Test Results ===
+Test: single_philo_death
+Arguments: 1 800 200 200
+Number of runs: 5
+Timestamp: Mon Jul 14 07:23:19 AM +01 2025
+===============================
+
+--- Test Run 1 ---
+Started at: 2025-07-14 07:23:19.819
+
+0 1 has taken a fork
+800 1 died
+
+Exit code: 0
+Finished at: 2025-07-14 07:23:20.626
+
+--- Test Run 2 ---
+Started at: 2025-07-14 07:23:20.629
+
+0 1 has taken a fork
+800 1 died
+
+Exit code: 0
+Finished at: 2025-07-14 07:23:21.436
+
+--- Test Run 3 ---
+Started at: 2025-07-14 07:23:21.438
+
+0 1 has taken a fork
+800 1 died
+
+Exit code: 0
+Finished at: 2025-07-14 07:23:22.245
+
+--- Test Run 4 ---
+Started at: 2025-07-14 07:23:22.247
+
+0 1 has taken a fork
+800 1 died
+
+Exit code: 0
+Finished at: 2025-07-14 07:23:23.053
+
+--- Test Run 5 ---
+Started at: 2025-07-14 07:23:23.056
+
+0 1 has taken a fork
+800 1 died
+
+Exit code: 0
+Finished at: 2025-07-14 07:23:23.862
+
